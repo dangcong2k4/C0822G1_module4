@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CurrencyController {
 
     @GetMapping({""})
-    public String CurrencyConversion(Model model,String number1,String number2){
+    public String currencyConversion(Model model,String number1,String number2){
         double number = Double.parseDouble(number1);
         int choose = Integer.parseInt(number2);
         String result = null;

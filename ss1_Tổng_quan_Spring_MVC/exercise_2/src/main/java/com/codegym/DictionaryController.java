@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/dictionary")
 public class DictionaryController {
     @GetMapping("")
-    public String SimpleDictionary(Model model,String english){
+    public String simpleDictionary(Model model,String english){
         String[] arr = {"hello","thank","black","red","apple","bye"};
         String[] arr1 = {"xin chào","cảm ơn","màu đen","màu đỏ","quả táo","tạm biệt"};
         String keyWord = english;
