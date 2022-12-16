@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class CalculatorController {
     @GetMapping
-    public String showFrom(){
+    public String showPage(){
         return "/index";
     }
     @RequestMapping("/calculator")
-    public String calculator(Model model,double numberOne,double numberTwo,String calculation){
+    public String calculate(Model model,double numberOne,double numberTwo,String calculation){
         double result=0;
         String display="";
         switch (calculation){
@@ -38,6 +38,8 @@ public class CalculatorController {
                 result = numberOne / numberTwo;
                 display = "kết quả là: "+result;
                 break;
+            default:
+                display="hãy chọn một phép tính";
         }
         model.addAttribute("display",display);
         return "/index";
