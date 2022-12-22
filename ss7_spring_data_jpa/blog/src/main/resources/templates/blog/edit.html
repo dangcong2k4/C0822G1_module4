@@ -9,8 +9,9 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 class="text-center">Trang thêm mới</h1>
-<form class="text-center" action="/blog/create" method="post" th:object="${blog}">
+<h1 class="text-center">Trang edit</h1>
+
+<form class="text-center" action="/blog/edit" method="post" th:object="${blog}">
     <input type="hidden" th:field="*{id}">
 
     <label th:for="title">Tiêu đề: </label><br>
@@ -22,10 +23,16 @@
     <label th:for="content">nội dung: </label><br>
     <input type="text" th:field="*{content}"><br>
 
+    <label th:for="content">nội dung: </label><br>
+    <select  th:field="*{category}">
+        <option th:each="item : ${categoryList} " th:value="${item.id}" th:text="${item.name}"></option>
+    </select><br>
+
     <label th:for="dateCreate">Ngày viết: </label><br>
     <input type="date" th:field="*{dateCreate}"><br>
 
     <input  class="btn btn-primary" type="submit" value="lưu">
 </form>
+
 </body>
 </html>
