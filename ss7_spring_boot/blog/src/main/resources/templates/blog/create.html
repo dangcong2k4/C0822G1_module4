@@ -22,6 +22,11 @@
     <label th:for="content">nội dung: </label><br>
     <input type="text" th:field="*{content}"><br>
 
+    <label th:for="content">nội dung: </label><br>
+    <select  th:field="*{category}">
+        <option th:each="item : ${categoryList} " th:value="${item.id}" th:text="${item.name}"></option>
+    </select><br>
+
     <label th:for="dateCreate">Ngày viết: </label><br>
     <input type="date" th:field="*{dateCreate}"><br>
 
