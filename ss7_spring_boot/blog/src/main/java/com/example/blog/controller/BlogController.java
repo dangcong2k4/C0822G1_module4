@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 //@Component
@@ -25,7 +27,7 @@ public class BlogController {
     private ICategoryService categoryService;
 
     @GetMapping("")
-    public String showList(@RequestParam(defaultValue = "")String title, @PageableDefault(size = 1,page = 0) Pageable pageable, Model model){
+    public String showList(@RequestParam(defaultValue = "")String title, @PageableDefault(size = 3,page = 0) Pageable pageable, Model model){
         Page<Blog> blogList = iBlogService.findByTitle(title,pageable);
         model.addAttribute("blogList",blogList);
         return "blog/list";
@@ -40,11 +42,16 @@ public class BlogController {
         return "blog/create";
     }
     @PostMapping("/create")
-    public String createProduct(Model model, @ModelAttribute("blog") Blog blog){
-        iBlogService.save(blog);
+    public String createProduct(Model model, @ModelAttribute("blog") Blog blog,RedirectAttributes redirectAttributes){
         List<Blog> blogList = iBlogService.findAll();
-        model.addAttribute("blogList",blogList);
-        return "blog/list";
+        for (Blog blog1:blogList ) {
+            if (blog.getTitle().equals(blog1.getTitle())) {
+                redirectAttributes.addFlashAttribute("mess","Đã có blog này");
+                return "redirect:/blog";
+            }
+        }
+        iBlogService.save(blog);
+        return "redirect:/blog";
     }
 
     @GetMapping("/edit/{id}")
@@ -56,18 +63,21 @@ public class BlogController {
     }
 
     @PostMapping("/edit")
-    public String updateProduct(Model model, @ModelAttribute("blog") Blog blog){
-        this.iBlogService.update(blog);
+    public String updateProduct(Model model, @ModelAttribute("blog") Blog blog, RedirectAttributes redirectAttributes){
         List<Blog> blogList = iBlogService.findAll();
-        model.addAttribute("blogList",blogList);
-        return "blog/list";
+        for (Blog blog1:blogList ) {
+            if (blog.getTitle().equals(blog1.getTitle())) {
+                redirectAttributes.addFlashAttribute("mess","Đã có blog này");
+                return "redirect:/blog";
+            }
+        }
+       iBlogService.update(blog);
+        return "redirect:/blog";
     }
     @GetMapping("/delete/{id}")
     public String deleteProduct(Model model,@PathVariable("id") int id){
         iBlogService.delete(id);
-        List<Blog> blogList = iBlogService.findAll();
-        model.addAttribute("blogList",blogList);
-        return "blog/list";
+        return "redirect:/blog";
     }
     @GetMapping("/details/{id}")
     public String showDetails(@PathVariable("id") int id, Model model){
