@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="33f36b80-3e57-46b0-a589-0df5169a0930" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ss1_Tổng_quan_Spring_MVC/exercise_2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ss1_Tổng_quan_Spring_MVC/exercise_2/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.idea/modules/exercise.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ss5_Thao_tác_với_CSDL_và_ORM/exercise/.idea/modules/exercise.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/java/com/example/blog/controller/BlogController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/java/com/example/blog/model/Blog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/java/com/example/blog/repository/IBlogRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/java/com/example/blog/service/IBlogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/java/com/example/blog/service/impl/BlogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/resources/templates/blog/blogDetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/resources/templates/blog/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/resources/templates/blog/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7/blog/src/main/resources/templates/blog/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/BlogApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/controller/BlogController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/controller/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/model/Blog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/model/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/repository/IBlogRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/repository/ICategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/service/IBlogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/service/ICategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/service/impl/BlogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/java/com/example/blog/service/impl/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/templates/blog/blogDetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/templates/blog/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/templates/blog/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/templates/blog/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/templates/category/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/templates/category/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/main/resources/templates/category/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_boot/blog/src/test/java/com/example/blog/BlogApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/BlogApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/controller/BlogController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/controller/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/model/Blog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/model/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/repository/IBlogRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/repository/ICategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/service/IBlogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/service/ICategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/service/impl/BlogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/java/com/example/blog/service/impl/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/templates/blog/blogDetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/templates/blog/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/templates/blog/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/templates/blog/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/templates/category/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/templates/category/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/main/resources/templates/category/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss7_spring_data_jpa/blog/src/test/java/com/example/blog/BlogApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2JIdcbPBkTKsyNifkO2gVPm4x3h" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33f36b80-3e57-46b0-a589-0df5169a0930" name="Default Changelist" comment="" />
+      <created>1671769612162</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671769612162</updated>
+      <workItem from="1671769613534" duration="36000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
