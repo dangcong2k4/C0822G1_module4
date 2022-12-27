@@ -56,7 +56,8 @@
             <input type="text" class="form-control inputSize" th:field="*{address}">
         </div>
         <div class="distance">
-            <select class="custom-select"  th:field="*{customerType}">
+            <label th:for="address">loại khách hàng</label>
+            <select class="custom-select form-control"  th:field="*{customerType}">
                 <option th:each="item : ${customerTypeList} " th:value="${item.id}" th:text="${item.name}"></option>
             </select><br>
         </div>

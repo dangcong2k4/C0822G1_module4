@@ -18,8 +18,9 @@
             <input class="form-control me-2" type="search" name="email" placeholder="tìm theo email" aria-label="Search">
             <input class="form-control me-2" type="search" name="customerType" placeholder="tìm theo loại khách hàng" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-            <a  class="btn btn-primary" href="/customer" style="height: 45px;width: 500px; margin-left: 20px">Tất cả danh sách</a>
+
         </form>
+        <a  class="btn btn-primary" href="/customer" style="height: 45px;width: 250px; margin-left: 10px">Tất cả danh sách</a>
     </div>
 </nav>
 <marquee><p th:text="${mess}"></p></marquee>
@@ -36,6 +37,7 @@
         <th scope="col"> Địa chỉ</th>
         <th scope="col"> Loại khách hàng</th>
         <th scope="col">Chỉnh sửa</th>
+        <th scope="col">Xóa</th>
     </tr>
     </thead>
 
@@ -62,6 +64,17 @@
     </tr>
     </tbody>
 </table>
+
+
+<a th:href="@{/customer(page=${customerList.number - 1})}" th:if="${customerList.hasPrevious()}"
+   class="btn btn-success">Previous</a>
+<span th:text="${customerList.number+1}+'/'+${customerList.totalPages}"></span>
+<a th:href="@{/customer(page=${customerList.number + 1})}" th:if="${customerList.hasNext()}"
+   class="btn btn-success">Next</a>
+
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form action="/customer/delete" method="get">

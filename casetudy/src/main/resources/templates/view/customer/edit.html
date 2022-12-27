@@ -18,10 +18,12 @@
       <label th:for="name">Họ tên</label>
       <input type="text" class="form-control inputSize" th:field="*{name}">
     </div>
+
     <div class="form-group distance">
       <label th:for="dateOfBirth">Ngày sinh</label>
       <input type="text" class="form-control inputSize" th:field="*{dateOfBirth}">
     </div>
+
     <div class="distance">
       <label class="form-label">Giới tính</label>
       <br>
@@ -38,11 +40,6 @@
         <label class="form-check-label">Nữ</label>
       </div>
     </div>
-    <div class="form-group distance">
-      <label th:for="idCard">Mã thẻ</label>
-      <input type="text" class="form-control inputSize" th:field="*{idCard}">
-    </div>
-
 
     <div class="form-group distance">
       <label th:for="phoneNumber">Số điện thoại</label>
@@ -57,7 +54,8 @@
       <input type="text" class="form-control inputSize" th:field="*{address}">
     </div>
     <div class="distance">
-      <select class="custom-select"  th:field="*{customerType}">
+      <label th:for="address">loại khách hàng</label>
+      <select class="custom-select form-control"  th:field="*{customerType}">
         <option th:each="item : ${customerTypeList} " th:value="${item.id}" th:text="${item.name}"></option>
       </select><br>
     </div>
