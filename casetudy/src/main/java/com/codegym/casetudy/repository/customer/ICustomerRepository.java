@@ -1,4 +1,4 @@
-package com.codegym.casetudy.repository;
+package com.codegym.casetudy.repository.customer;
 
 import com.codegym.casetudy.model.customer.Customer;
 import org.springframework.data.domain.Page;
