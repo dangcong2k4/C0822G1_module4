@@ -9,13 +9,12 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-<!--<div class="insert" th:insert="~{/layout::header}"></div>-->
 
 <section class="gradient-custom">
     <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-lg-9 col-xl-7">
-                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card shadow-2-strong card-registration bg-warning" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">THÊM MỚI DỊCH VỤ</h3>
                         <form action="/facility/create" method="post" th:object="${facility}">
@@ -81,17 +80,17 @@
                                 <label th:for="facilityFree" class="form-label">Dịch Vụ Miễn Phí Đi Kèm</label>
                                 <input type="text" th:field="*{facilityFree}" class="form-control form-control-lg"/>
                             </div>
-
+                            <center>
                             <div class="mt-4 pt-2">
                                 <button class="btn btn-primary btn-lg" type="submit">Lưu</button>
                             </div>
+                            </center>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<!--    <div class="insert" th:insert="~{/layout::footer}"></div>-->
 </section>
 <script>
     function showValue() {
