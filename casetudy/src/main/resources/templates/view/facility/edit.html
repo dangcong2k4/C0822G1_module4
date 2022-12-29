@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,7 +9,6 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-<!--<div class="insert" th:insert="~{/layout::header}"></div>-->
 
 <section class="gradient-custom">
     <div class="container py-5 h-100">
@@ -18,8 +17,8 @@
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">THÊM MỚI DỊCH VỤ</h3>
-                        <form action="/facility/create" method="post" th:object="${facility}">
-
+                        <form action="/facility/edit" method="post" th:object="${facility}">
+                            <input type="hidden" th:field="*{id}" class="form-control form-control-lg"/>
                             <div class="form-outline">
                                 <label th:for="facilityType" class="form-label fs-6">Loại Dịch Vụ</label>
                                 <select id="facilityType" th:field="*{facilityType}" class="select form-control-lg" onchange="showValue()">
@@ -30,6 +29,7 @@
                             <div class="form-outline">
                                 <label class="form-label" th:for="name">Tên dịch vụ</label>
                                 <input type="text" th:field="*{name}" class="form-control form-control-lg"/>
+
                             </div>
 
                             <div class="form-outline">
@@ -91,7 +91,6 @@
             </div>
         </div>
     </div>
-<!--    <div class="insert" th:insert="~{/layout::footer}"></div>-->
 </section>
 <script>
     function showValue() {

@@ -2,8 +2,8 @@ package com.codegym.casetudy.service.impl;
 
 import com.codegym.casetudy.model.customer.Customer;
 import com.codegym.casetudy.model.customer.CustomerType;
-import com.codegym.casetudy.repository.ICustomerRepository;
-import com.codegym.casetudy.repository.ICustomerTypeRepository;
+import com.codegym.casetudy.repository.customer.ICustomerRepository;
+import com.codegym.casetudy.repository.customer.ICustomerTypeRepository;
 import com.codegym.casetudy.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,2 +1,24 @@
-package com.codegym.casetudy.service;public interface IFacilityService {
+package com.codegym.casetudy.service;
+
+import com.codegym.casetudy.model.customer.Customer;
+import com.codegym.casetudy.model.facility.Facility;
+import com.codegym.casetudy.model.facility.FacilityType;
+import com.codegym.casetudy.model.facility.RentType;
+
+import java.util.List;
+
+public interface IFacilityService {
+    List<Facility> findAll();
+
+    List<FacilityType> findFacilityTypeAll();
+
+    List<RentType> findRentTypeAll();
+
+    void save(Facility facility);
+
+    void update(Facility facility);
+
+    void delete(int id);
+
+    Facility findById(int id);
 }

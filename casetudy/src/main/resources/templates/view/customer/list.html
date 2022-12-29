@@ -14,9 +14,13 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
         <form class="d-flex" action="/customer" method="get">
-                <input class="form-control me-2" type="search" name="name" placeholder="tìm theo họ tên" aria-label="Search">
+            <input class="form-control me-2" type="search" name="name" placeholder="tìm theo họ tên" aria-label="Search">
             <input class="form-control me-2" type="search" name="email" placeholder="tìm theo email" aria-label="Search">
-            <input class="form-control me-2" type="search" name="customerType" placeholder="tìm theo loại khách hàng" aria-label="Search">
+            <select class=" form-control"  name="customerType">
+                <option value="" selected>tìm theo loại khách hàng</option>
+                <option th:each="item: ${customerTypeList}" th:value="${item.name}"
+                        th:text="${item.name}"></option>
+            </select>
             <button class="btn btn-outline-success" type="submit">Search</button>
 
         </form>

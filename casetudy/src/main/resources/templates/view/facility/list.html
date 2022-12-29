@@ -1,10 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="~{layout :: head}">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div th:replace="~{layout :: header}"></div>
+<h1 class="text-center">Danh sách cơ sở</h1>
+<center>
+  <a  class="btn btn-primary" href="/facility/create">Thêm mới</a>
+</center>
+<marquee><p th:text="${mess}"></p></marquee>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col"> Tên dịch vụ</th>
+        <th scope="col"> Diện tích</th>
+        <th scope="col"> Chi phí thuê </th>
+        <th scope="col"> Số người tối đa</th>
+        <th scope="col"> Tiêu chuẩn phòng</th>
+        <th scope="col"> Mô tả tiện nghi</th>
+        <th scope="col"> Diện tích hồ bơi</th>
+        <th scope="col"> Số tầng </th>
+        <th scope="col"> Dịch vụ miễn phí đi kèm </th>
+        <th scope="col"> Kiểu thuê </th>
+        <th scope="col"> Loại dịch vụ </th>
+        <th scope="col">Chỉnh sửa</th>
+        <th scope="col">Xóa</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr th:each="facility, status : ${facilityList}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${facility.name}"></td>
+        <td th:text="${facility.area}"></td>
+        <td th:text="${facility.cost}"></td>
+        <td th:text="${facility.maxPeople}"></td>
+        <td th:text="${facility.standardRoom}"></td>
+        <td th:text="${facility.descriptionOther}"></td>
+        <td th:text="${facility.poolArea}"></td>
+        <td th:text="${facility.numberOfFloors}"></td>
+        <td th:text="${facility.facilityFree}"></td>
+        <td th:text="${facility.rentType.name}"></td>
+        <td th:text="${facility.facilityType.name}"></td>
+        <td>
+          <a class="btn btn-primary" th:href="@{/facility/edit/__${facility.id}__}">Sửa</a>
+        </td>
+        <td>
+          <button  th:attr="onclick=|infoDelete('${facility.id}','${facility.name}')|"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Xóa
+          </button>
+        </td>
+    </tr>
+    </tbody>
+  </table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="/facility/delete" method="get">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-dark">
+          <input type="text" hidden name="action" value="delete">
+          <input type="text" hidden name="id" id="deleteId">
+          <h4> bạn có muốn xóa cơ sở có tên:</h4><br>
+          <span id="deleteName" class="fw-bold"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+          <button type="submit" class="btn btn-primary">Có</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  function infoDelete(id,name) {
+    console.log(id)
+    document.getElementById("deleteId").value=id;
+    document.getElementById("deleteName").innerText=name;
+  }
+
+</script>
+<div th:replace="~{layout :: footer}"></div>
 </body>
 </html>

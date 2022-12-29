@@ -25,6 +25,8 @@ public class CustomerController {
                            @RequestParam(value = "customerType", defaultValue = "")String customerType, @PageableDefault(size = 3,page = 0) Pageable pageable){
         Page<Customer> customerList = customerService.searchCustomer(name,email,customerType,pageable);
         model.addAttribute("customerList",customerList);
+        List<CustomerType> customerTypeList = customerService.findCustomerTypeAll();
+        model.addAttribute("customerTypeList",customerTypeList);
         return "view/customer/list";
     }
 
