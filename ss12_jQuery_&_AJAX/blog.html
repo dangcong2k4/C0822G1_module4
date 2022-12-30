@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <input class="form-control me-2" type="search" id="title" placeholder="tìm theo tiêu đề" aria-label="Search">
+    <button class="btn btn-outline-success" onclick="search()" type="submit">Search</button>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">STT</th>
+        <th scope="col"> Tiêu đề</th>
+        <th scope="col"> nhà văn</th>
+        <th scope="col"> nội dung</th>
+        <th scope="col"> loại danh mục</th>
+        <th scope="col"> Ngày viết</th>
+    </tr>
+    </thead>
+    <tbody id="my-body"></tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+<script>
+
+
+    function ok() {
+        $('#exampleModal').hide();
+        $('.modal-backdrop').hide();
+    }
+
+
+    function init() {
+        ok();
+        $.ajax({
+            type: "GET",
+            //tên API
+            url: "http://localhost:8080/blog2/blog",
+            //xử lý khi thành công
+            success: function (data) {
+                //data => đang ở dạng json
+                let table = '';// lưu trữ table
+                for (let i = 0; i < data.length; i++) {
+                    table +=
+                        `
+                        <tr>
+                            <th scope="row">${i + 1}</th>
+                            <td>${data[i].title}</td>
+                            <td>${data[i].writer}</td>
+                            <td>${data[i].content}</td>
+                            <td>${data[i].category.name}</td>
+                            <td>${data[i].dateCreate}</td>
+                        </tr>
+                        `
+                }
+                $('#my-body').html(table)
+            }
+        });
+    }
+    function search() {
+        ok();
+        let title = $('#title').val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/blog2/search/"+title,
+
+            success: function (data) {
+
+                let table = '';
+                for (let i = 0; i < data.length; i++) {
+                    table +=
+                        `
+                        <tr>
+                            <th scope="row">${i + 1}</th>
+                            <td>${data[i].title}</td>
+                            <td>${data[i].writer}</td>
+                            <td>${data[i].content}</td>
+                            <td>${data[i].category.name}</td>
+                            <td>${data[i].dateCreate}</td>
+                        </tr>
+                        `
+                }
+                $('#my-body').html(table)
+            }
+        });
+        $('#title').val("");
+    }
+    init();
+
+</script>
+
+</body>
+</html>
