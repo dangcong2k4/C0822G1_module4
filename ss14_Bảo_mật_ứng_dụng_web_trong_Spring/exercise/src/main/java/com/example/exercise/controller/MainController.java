@@ -69,7 +69,7 @@ public class MainController {
 
             model.addAttribute("userInfo", userInfo);
 
-            String message = "Hi " + principal.getNickname() //
+            String message = "Hi " + principal.getNickname()         //
                     + "<br> You do not have permission to access this page!";
             model.addAttribute("message", message);
 
