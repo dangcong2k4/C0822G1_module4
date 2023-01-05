@@ -1,13 +1,8 @@
 package com.codegym.casetudy.controller;
 
-import com.codegym.casetudy.model.customer.Customer;
-import com.codegym.casetudy.model.customer.CustomerType;
 import com.codegym.casetudy.model.facility.Facility;
 import com.codegym.casetudy.model.facility.FacilityType;
 import com.codegym.casetudy.model.facility.RentType;
-import com.codegym.casetudy.repository.facility.IFacilityRepository;
-import com.codegym.casetudy.repository.facility.IFacilityTypeRepository;
-import com.codegym.casetudy.repository.facility.IRentTypeRepository;
 import com.codegym.casetudy.service.IFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,8 +22,10 @@ public class FacilityController {
     private IFacilityService facilityService;
 
     @GetMapping("")
-    public String showList(Model model){
-        List<Facility> facilityList = facilityService.findAll();
+    public String showList(Model model, @RequestParam(value ="name" ,   defaultValue = "")String name,
+                           @RequestParam(value = "facilityType", defaultValue = "")String facilityType,
+                           @PageableDefault(size = 5,page = 0) Pageable pageable){
+        Page<Facility> facilityList = facilityService.searchFacility(name,facilityType,pageable);
         model.addAttribute("facilityList",facilityList);
         List<FacilityType> facilityTypeList = facilityService.findFacilityTypeAll();
         model.addAttribute("facilityTypeList",facilityTypeList);
@@ -48,7 +45,7 @@ public class FacilityController {
         return "view/facility/create";
     }
     @PostMapping("/create")
-    public String createProduct(@ModelAttribute("facility") Facility facility, RedirectAttributes redirectAttributes){
+    public String createFacility(@ModelAttribute("facility") Facility facility, RedirectAttributes redirectAttributes){
 
         List<Facility> facilityList = facilityService.findAll();
         for (Facility facility1:facilityList ) {

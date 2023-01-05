@@ -1,21 +1,29 @@
 package com.codegym.casetudy.model.contract;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 public class ContractDetail implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @ManyToOne
     private AttachFacility attachFacility;
-    @Id
+
     @ManyToOne
     @JoinColumn(name = "contract_id",referencedColumnName ="id")
     private Contract contract;
     private int quantity;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public AttachFacility getAttachFacility() {
         return attachFacility;

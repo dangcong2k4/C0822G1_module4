@@ -50,8 +50,8 @@
         <td th:text="${status.count}"></td>
         <td th:text="${customer.name}"></td>
         <td th:text="${customer.dateOfBirth}"></td>
-        <td th:text="${customer.gender}"></td>
-
+        <td th:if="${customer.gender==true}" th:text="Nam"></td>
+        <td th:if="${customer.gender==false}" th:text="Nữ"></td>
         <td th:text="${customer.idCard}"></td>
         <td th:text="${customer.phoneNumber}"></td>
         <td th:text="${customer.email}"></td>
@@ -62,7 +62,7 @@
         </td>
         <td>
             <button  th:attr="onclick=|infoDelete('${customer.id}','${customer.name}')|"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Xóa
+                Xóa 
             </button>
         </td>
     </tr>

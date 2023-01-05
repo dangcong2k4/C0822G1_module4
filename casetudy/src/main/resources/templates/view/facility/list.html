@@ -10,6 +10,21 @@
 <center>
   <a  class="btn btn-primary" href="/facility/create">Thêm mới</a>
 </center>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <form class="d-flex" action="/facility" method="get">
+      <input class="form-control me-2" type="search" name="name" placeholder="tìm theo họ tên" aria-label="Search">
+      <select class=" form-control"  name="facilityType">
+        <option value="" selected>tìm theo loại cơ sở</option>
+        <option th:each="item: ${facilityTypeList}" th:value="${item.name}"
+                th:text="${item.name}"></option>
+      </select>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+    <a  class="btn btn-primary" href="/facility" style="height: 45px;width: 250px; margin-left: 10px">Tất cả danh sách</a>
+  </div>
+</nav>
 <marquee><p th:text="${mess}"></p></marquee>
   <table class="table table-striped">
     <thead>
@@ -56,6 +71,16 @@
     </tr>
     </tbody>
   </table>
+
+
+
+<a th:href="@{/facility(page=${facilityList.number - 1})}" th:if="${facilityList.hasPrevious()}"
+   class="btn btn-success">Previous</a>
+<span th:text="${facilityList.number+1}+'/'+${facilityList.totalPages}"></span>
+<a th:href="@{/facility(page=${facilityList.number + 1})}" th:if="${facilityList.hasNext()}"
+   class="btn btn-success">Next</a>
+
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

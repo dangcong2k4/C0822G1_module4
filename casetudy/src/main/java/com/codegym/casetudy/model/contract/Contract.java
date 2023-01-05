@@ -14,6 +14,7 @@ public class Contract {
     private String startDate;
     private String endDate;
     private double deposit;
+    private Double totalMoney;
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
@@ -57,6 +58,14 @@ public class Contract {
 
     public void setDeposit(double deposit) {
         this.deposit = deposit;
+    }
+
+    public double getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
     }
 
     public Employee getEmployee() {

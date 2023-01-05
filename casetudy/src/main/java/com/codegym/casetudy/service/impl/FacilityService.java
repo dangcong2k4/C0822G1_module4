@@ -8,6 +8,8 @@ import com.codegym.casetudy.repository.facility.IFacilityTypeRepository;
 import com.codegym.casetudy.repository.facility.IRentTypeRepository;
 import com.codegym.casetudy.service.IFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,5 +56,10 @@ public class FacilityService implements IFacilityService {
     @Override
     public Facility findById(int id) {
         return facilityRepository.findById(id).get();
+    }
+
+    @Override
+    public Page<Facility> searchFacility(String name, String facilityType, Pageable pageable) {
+        return facilityRepository.searchFacility(name,facilityType,pageable);
     }
 }
