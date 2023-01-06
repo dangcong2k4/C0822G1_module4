@@ -13,8 +13,11 @@ public class Customer {
     private String name;
     private String dateOfBirth;
     private Boolean gender;
+    @Column(unique = true)
     private String idCard;
+    @Column(unique = true)
     private String phoneNumber;
+    @Column(unique = true)
     private String email;
     private String address;
     @ManyToOne
