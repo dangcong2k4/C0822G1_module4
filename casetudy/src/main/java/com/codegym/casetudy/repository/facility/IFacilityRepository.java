@@ -16,4 +16,9 @@ public interface IFacilityRepository extends JpaRepository<Facility,Integer> {
     Page<Facility> searchFacility(@Param("name") String name,
                                   @Param("facilityType") String facilityType,
                                   Pageable pageable);
+    @Query(value = "select `facility`.* from `facility`" +
+            " join `facility_type` on `facility_type`.id = `facility`.facility_type_id " +
+            "where `facility`.name like concat('%',:name,'%')",nativeQuery = true)
+    Page<Facility> searchFacilityName(@Param("name") String name,
+                                  Pageable pageable);
 }

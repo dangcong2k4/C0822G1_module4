@@ -52,4 +52,9 @@ public class CustomerService implements ICustomerService {
     public Page<Customer> searchCustomer(String name, String email, String customerType, Pageable pageable) {
         return customerRepository.searchCustomer(name,email,customerType,pageable);
     }
+
+    @Override
+    public Page<Customer> findByNameAndEmail(String name, String email, Pageable pageable) {
+        return customerRepository.findByNameAndEmail(name,email,pageable);
+    }
 }

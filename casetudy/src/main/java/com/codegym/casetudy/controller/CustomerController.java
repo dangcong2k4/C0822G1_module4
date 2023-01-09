@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/customer")
@@ -27,7 +28,12 @@ public class CustomerController {
     public String showList(Model model, @RequestParam(value ="name" ,   defaultValue = "")String name,
                            @RequestParam( value = "email", defaultValue = "")String email,
                            @RequestParam(value = "customerType", defaultValue = "")String customerType, @PageableDefault(size = 5,page = 0) Pageable pageable){
-        Page<Customer> customerList = customerService.searchCustomer(name,email,customerType,pageable);
+        Page<Customer> customerList;
+        if(Objects.equals(customerType, "")){
+            customerList = customerService.findByNameAndEmail(name,email,pageable);
+        }else {
+            customerList  = customerService.searchCustomer(name,email,customerType,pageable);
+        }
         model.addAttribute("customerList",customerList);
         List<CustomerType> customerTypeList = customerService.findCustomerTypeAll();
         model.addAttribute("customerTypeList",customerTypeList);

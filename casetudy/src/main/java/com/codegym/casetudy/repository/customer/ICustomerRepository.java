@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer,Integer> {
     @Query(value = "select `customer`.* from `customer`" +
@@ -17,4 +19,11 @@ public interface ICustomerRepository extends JpaRepository<Customer,Integer> {
                                   @Param("email") String email,
                                   @Param("customerType") String customerType,
                                   Pageable pageable);
+    @Query(value = "select `customer`.* from `customer`" +
+            "join `customer_type` on `customer_type`.id=`customer`.customer_type_id" +
+            " where `customer`.name like concat('%',:name,'%') and `customer`.email like concat('%',:email,'%')",nativeQuery = true)
+    Page<Customer> findByNameAndEmail(@Param("name") String name,
+                                  @Param("email") String email,
+                                  Pageable pageable);
+
 }

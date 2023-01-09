@@ -3,9 +3,12 @@ package com.codegym.casetudy.dto;
 public class ContractDto {
 
     private int id;
-    private String name;
     private String startDate;
     private String endDate;
+    private double deposit;
+
+    public ContractDto() {
+    }
 
     public int getId() {
         return id;
@@ -13,14 +16,6 @@ public class ContractDto {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getStartDate() {
@@ -37,5 +32,13 @@ public class ContractDto {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public double getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(double deposit) {
+        this.deposit = deposit;
     }
 }

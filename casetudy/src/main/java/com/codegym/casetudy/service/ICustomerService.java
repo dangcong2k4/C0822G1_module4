@@ -23,4 +23,6 @@ public interface ICustomerService {
     Customer findById(int id);
 
     Page<Customer> searchCustomer(String name,String email,String customerType, Pageable pageable);
+
+    Page<Customer> findByNameAndEmail(String name,String email, Pageable pageable);
 }

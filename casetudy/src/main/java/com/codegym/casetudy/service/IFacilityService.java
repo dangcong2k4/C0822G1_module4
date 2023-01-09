@@ -25,4 +25,6 @@ public interface IFacilityService {
     Facility findById(int id);
 
     Page<Facility> searchFacility(String name, String FacilityType, Pageable pageable);
+
+    Page<Facility> searchFacilityName(String name,Pageable pageable);
 }
