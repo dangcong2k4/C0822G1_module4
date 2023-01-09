@@ -1,15 +1,22 @@
 package com.codegym.casetudy.controller;
 
+import com.codegym.casetudy.dto.CustomerDto;
+import com.codegym.casetudy.dto.FacilityDto;
+import com.codegym.casetudy.model.customer.Customer;
+import com.codegym.casetudy.model.customer.CustomerType;
 import com.codegym.casetudy.model.facility.Facility;
 import com.codegym.casetudy.model.facility.FacilityType;
 import com.codegym.casetudy.model.facility.RentType;
 import com.codegym.casetudy.service.IFacilityService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,19 +48,31 @@ public class FacilityController {
         model.addAttribute("facilityTypeList",facilityTypeList);
         List<RentType> rentTypeList = facilityService.findRentTypeAll();
         model.addAttribute("rentTypeList",rentTypeList);
-        model.addAttribute("facility",facility);
+        model.addAttribute("facilityDto",facility);
         return "view/facility/create";
     }
     @PostMapping("/create")
-    public String createFacility(@ModelAttribute("facility") Facility facility, RedirectAttributes redirectAttributes){
-
+    public String createFacility(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes){
+        new FacilityDto().validate(facilityDto,bindingResult);
+        if(bindingResult.hasErrors()){
+            List<FacilityType> facilityTypeList = facilityService.findFacilityTypeAll();
+            model.addAttribute("facilityTypeList",facilityTypeList);
+            List<RentType> rentTypeList = facilityService.findRentTypeAll();
+            model.addAttribute("rentTypeList",rentTypeList);
+            return "view/facility/create";
+        }
         List<Facility> facilityList = facilityService.findAll();
         for (Facility facility1:facilityList ) {
-            if (facility.getName().equals(facility1.getName())) {
+            if (facilityDto.getName().equals(facility1.getName())) {
                 redirectAttributes.addFlashAttribute("mess","Đã có cơ sở này");
                 return "redirect:/facility";
             }
         }
+        Facility facility = new Facility();
+        BeanUtils.copyProperties(facilityDto,facility);
+        facility.setMaxPeople(Integer.parseInt(facilityDto.getMaxPeople()));
+        facility.setArea(Integer.parseInt(facilityDto.getArea()));
+        facility.setCost(Double.parseDouble(facilityDto.getCost()));
         redirectAttributes.addFlashAttribute("mess","thêm mới thành công");
         facilityService.save(facility);
         return "redirect:/facility";

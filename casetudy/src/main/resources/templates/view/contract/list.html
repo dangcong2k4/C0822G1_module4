@@ -29,19 +29,19 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="contract, status : ${contractList}">
+  <tr th:each="contract, status : ${contractDtos}">
     <td th:text="${status.count}"></td>
-    <td th:text="${contract.facility.name}"></td>
-    <td th:text="${contract.customer.name}"></td>
-    <td th:text="${contract.startDate}"></td>
-    <td th:text="${contract.endDate}"></td>
-    <td th:text="${contract.deposit}"></td>
-    <td th:text="2020202"></td>
+    <td th:text="${contract.getFacilityName()}"></td>
+    <td th:text="${contract.getCustomerName()}"></td>
+    <td th:text="${contract.getStartDate()}"></td>
+    <td th:text="${contract.getEndDate()}"></td>
+    <td th:text="${contract.getDeposit()}"></td>
+    <td th:text="${contract.getTotalMoney()}"></td>
     <td>
-      <button type="button" class="btn btn-primary" th:attr="onclick=|updateContract('${contract.id}','${contract.startDate}','${contract.endDate}','${contract.deposit}','${contract.customer.id}','${contract.facility.id}',)|" data-bs-toggle="modal" data-bs-target="#updateModal">
+      <button type="button" class="btn btn-primary" th:attr="onclick=|updateContract('${contract.getId()}','${contract.getStartDate()}','${contract.getEndDate()}','${contract.getDeposit()}','${contract.getCustomerId()}','${contract.getFacilityId()}')|" data-bs-toggle="modal" data-bs-target="#updateModal">
         +
       </button>
-      <a class="btn btn-primary" th:href="@{/contract/show/__${contract.id}__}">Danh sách các dịch vụ đi kèm</a>
+      <a class="btn btn-primary" th:href="@{/contract/show/__${contract.getId()}__}">Danh sách các dịch vụ đi kèm</a>
     </td>
   </tr>
   </tbody>

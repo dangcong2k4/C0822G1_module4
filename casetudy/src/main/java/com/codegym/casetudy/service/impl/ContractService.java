@@ -1,6 +1,7 @@
 package com.codegym.casetudy.service.impl;
 
 
+import com.codegym.casetudy.dto.IContractDto;
 import com.codegym.casetudy.model.contract.AttachFacility;
 import com.codegym.casetudy.model.contract.Contract;
 import com.codegym.casetudy.model.contract.ContractDetail;
@@ -23,9 +24,9 @@ public class ContractService implements IContractService {
     private IContractDetailRepository contractDetailRepository;
 
     @Override
-    public List<Contract> findAllContract() {
-        List<Contract> contractDtos =  contractRepository.findAllContract();
-        return null;
+    public List<IContractDto> findAllContract() {
+//        List<IContractDto> contractDtos =  contractRepository.findAllContract();
+        return contractRepository.findAllContract();
     }
 
     @Override

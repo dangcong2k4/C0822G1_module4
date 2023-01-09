@@ -1,5 +1,6 @@
 package com.codegym.casetudy.controller;
 
+import com.codegym.casetudy.dto.IContractDto;
 import com.codegym.casetudy.model.contract.AttachFacility;
 import com.codegym.casetudy.model.contract.Contract;
 import com.codegym.casetudy.model.contract.ContractDetail;
@@ -28,8 +29,8 @@ public class ContractController {
 
     @GetMapping("")
     public String showList(Model model){
-        List<Contract> contractList = contractService.findAll();
-        model.addAttribute("contractList",contractList);
+        List<IContractDto> contractDtos = contractService.findAllContract();
+        model.addAttribute("contractDtos",contractDtos);
         List<Customer> customerList = customerService.findAll();
         model.addAttribute("customerList",customerList);
         List<Facility> facilityList = facilityService.findAll();

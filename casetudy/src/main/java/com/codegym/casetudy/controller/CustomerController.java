@@ -43,7 +43,7 @@ public class CustomerController {
         return "view/customer/create";
     }
     @PostMapping("/create")
-    public String createProduct(@Validated @ModelAttribute("customerDto") CustomerDto customerDto, BindingResult bindingResult, Model model,RedirectAttributes redirectAttributes){
+    public String createCustomer(@Validated @ModelAttribute("customerDto") CustomerDto customerDto, BindingResult bindingResult, Model model,RedirectAttributes redirectAttributes){
         new CustomerDto().validate(customerDto,bindingResult);
         if(bindingResult.hasErrors()){
             List<CustomerType> customerTypeList = customerService.findCustomerTypeAll();

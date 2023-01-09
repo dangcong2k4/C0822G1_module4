@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface IFacilityRepository extends JpaRepository<Facility,Integer> {
     @Query(value = "select `facility`.* from `facility`" +
             " join `facility_type` on `facility_type`.id = `facility`.facility_type_id " +
-            "where `facility`.name like concat('%',:name,'%') and `facility_type`.name like concat('%',:facilityType,'%')",nativeQuery = true)
+            "where `facility`.name like concat('%',:name,'%') and `facility_type`.name = :facilityType",nativeQuery = true)
     Page<Facility> searchFacility(@Param("name") String name,
                                   @Param("facilityType") String facilityType,
                                   Pageable pageable);
