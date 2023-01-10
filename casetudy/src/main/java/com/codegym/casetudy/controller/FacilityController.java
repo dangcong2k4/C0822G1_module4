@@ -33,7 +33,7 @@ public class FacilityController {
     public String showList(Model model, @RequestParam(value ="name" ,   defaultValue = "")String name,
                            @RequestParam(value = "facilityType", defaultValue = "")String facilityType,
                            @PageableDefault(size = 5,page = 0) Pageable pageable){
-        Page<Facility> facilityList = facilityService.searchFacility(name,facilityType,pageable);
+        Page<Facility> facilityList;
         if(Objects.equals(facilityType, "")){
             facilityList = facilityService.searchFacilityName(name,pageable);
         }else {
@@ -90,12 +90,25 @@ public class FacilityController {
         model.addAttribute("facilityTypeList",facilityTypeList);
         List<RentType> rentTypeList = facilityService.findRentTypeAll();
         model.addAttribute("rentTypeList",rentTypeList);
-        model.addAttribute("facility",facilityService.findById(id));
+        model.addAttribute("facilityDto",facilityService.findById(id));
         return "view/facility/edit";
     }
 
     @PostMapping("/edit")
-    public String updateProduct(@ModelAttribute("facility") Facility facility, RedirectAttributes redirectAttributes){
+    public String updateProduct(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes){
+        new FacilityDto().validate(facilityDto,bindingResult);
+        if(bindingResult.hasErrors()){
+            List<FacilityType> facilityTypeList = facilityService.findFacilityTypeAll();
+            model.addAttribute("facilityTypeList",facilityTypeList);
+            List<RentType> rentTypeList = facilityService.findRentTypeAll();
+            model.addAttribute("rentTypeList",rentTypeList);
+            return "view/facility/edit";
+        }
+        Facility facility = new Facility();
+        BeanUtils.copyProperties(facilityDto,facility);
+        facility.setMaxPeople(Integer.parseInt(facilityDto.getMaxPeople()));
+        facility.setArea(Integer.parseInt(facilityDto.getArea()));
+        facility.setCost(Double.parseDouble(facilityDto.getCost()));
         redirectAttributes.addFlashAttribute("mess","Chỉnh sửa thành công");
         facilityService.update(facility);
         return "redirect:/facility";

@@ -16,8 +16,8 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration bg-warning" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">THÊM MỚI DỊCH VỤ</h3>
-                        <form action="/facility/edit" method="post" th:object="${facility}">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Chỉnh sửa cơ sở</h3>
+                        <form action="/facility/edit" method="post" th:object="${facilityDto}">
                             <input type="hidden" th:field="*{id}" class="form-control form-control-lg"/>
                             <div class="form-outline">
                                 <label th:for="facilityType" class="form-label fs-6">Loại Dịch Vụ</label>
@@ -29,22 +29,25 @@
                             <div class="form-outline">
                                 <label class="form-label" th:for="name">Tên dịch vụ</label>
                                 <input type="text" th:field="*{name}" class="form-control form-control-lg"/>
-
+                                <i th:errors="*{name}" style="color: red"></i>
                             </div>
 
                             <div class="form-outline">
                                 <label class="form-label" th:for="area">Diện Tích</label>
                                 <input type="text" th:field="*{area}" class="form-control form-control-lg"/>
+                                <i th:errors="*{area}" style="color: red"></i>
                             </div>
 
                             <div class="form-outline datepicker w-100">
                                 <label th:for="cost" class="form-label">Chi Phí Thuê</label>
                                 <input type="text" th:field="*{cost}" class="form-control form-control-lg"/>
+                                <i th:errors="*{cost}" style="color: red"></i>
                             </div>
 
                             <div class="form-outline datepicker w-100">
                                 <label th:for="maxPeople" class="form-label">Số Người Tối Đa</label>
                                 <input type="text" th:field="*{maxPeople}" class="form-control form-control-lg"/>
+                                <i th:errors="*{maxPeople}" style="color: red"></i>
                             </div>
 
                             <div id="standardRoom" class="form-outline">
@@ -61,10 +64,9 @@
                             </div>
 
                             <div id="descriptionOtherConvenience" class="form-outline">
-                                <label th:for="descriptionOther" class="form-label">Mô Tả Tiện Nghi
-                                    Khác</label>
-                                <input type="text" th:field="*{descriptionOther}"
-                                       class="form-control form-control-lg"/>
+                                <label th:for="descriptionOther" class="form-label">Mô Tả Tiện Nghi Khác</label>
+                                <input type="text" th:field="*{descriptionOther}" class="form-control form-control-lg"/>
+                                <i th:errors="*{descriptionOther}" style="color: red"></i>
                             </div>
 
                             <div id="poolArea" class="form-outline">

@@ -14,9 +14,9 @@ public class FacilityDto implements Validator {
     @NotBlank(message = "không đc để trống")
     @Size(min =5,max = 45,message = " họ tên phải nhiều hơn 5 kí tự và ít hơn 45 ký tự")
     private String name;
-    @Pattern(regexp = "^[1-9][0-9]*$",message = "diện tích phải lớn 10m^2")
+    @Pattern(regexp = "^[1-9][0-9]*$",message = "diện tích phải là số dương")
     private String area;
-    @Pattern(regexp = "^[1-9][0-9]*$",message = "chi phí thuê phải lớn hơn 50000000")
+    @Pattern(regexp = "^[1-9][0-9.]*$",message = "chi phí thuê phải là số dương")
     private String cost;
     @Pattern(regexp = "^[1-9][0-9]*$",message = "số người phải nguyên dương")
     private String maxPeople;

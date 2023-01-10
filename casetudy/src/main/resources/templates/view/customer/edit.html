@@ -12,16 +12,18 @@
 <a class="btn btn-primary" href="/customer">quay lại danh sách</a>
 <h1 class="text-center">Trang chỉnh sửa</h1>
 <center>
-  <form  class="text-center" action="/customer/edit" style="width: 400px" method="post" th:object="${customer}">
+  <form  class="text-center" action="/customer/edit" style="width: 400px" method="post" th:object="${customerDto}">
     <input type="hidden" th:field="*{id}">
     <div class="form-group distance">
       <label th:for="name">Họ tên</label>
       <input type="text" class="form-control inputSize" th:field="*{name}">
+      <i th:errors="*{name}" style="color: red"></i>
     </div>
 
     <div class="form-group distance">
       <label th:for="dateOfBirth">Ngày sinh</label>
-      <input type="text" class="form-control inputSize" th:field="*{dateOfBirth}">
+      <input type="date" class="form-control inputSize" th:field="*{dateOfBirth}">
+      <i th:errors="*{dateOfBirth}" style="color: red"></i>
     </div>
 
     <div class="distance">
@@ -42,23 +44,35 @@
     </div>
 
     <div class="form-group distance">
+      <label th:for="idCard">Mã thẻ</label>
+      <input type="text" class="form-control inputSize" th:field="*{idCard}">
+      <i th:errors="*{idCard}" style="color: red"></i>
+    </div>
+
+    <div class="form-group distance">
       <label th:for="phoneNumber">Số điện thoại</label>
       <input type="text" class="form-control inputSize" th:field="*{phoneNumber}">
+      <i th:errors="*{phoneNumber}" style="color: red"></i>
     </div>
+
     <div class="form-group distance">
       <label th:for="email">Email</label>
       <input type="text" class="form-control inputSize" th:field="*{email}">
+      <i th:errors="*{email}" style="color: red"></i>
     </div>
+
     <div class="form-group distance">
       <label th:for="address">Địa chỉ</label>
       <input type="text" class="form-control inputSize" th:field="*{address}">
     </div>
+
     <div class="distance">
       <label th:for="address">loại khách hàng</label>
       <select class="custom-select form-control"  th:field="*{customerType}">
         <option th:each="item : ${customerTypeList} " th:value="${item.id}" th:text="${item.name}"></option>
       </select><br>
     </div>
+
     <button type="submit" class="btn btn-primary">Lưu</button>
 
 

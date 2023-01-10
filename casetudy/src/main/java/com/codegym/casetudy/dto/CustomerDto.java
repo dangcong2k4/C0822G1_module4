@@ -13,15 +13,14 @@ public class CustomerDto implements Validator {
     private int id;
     @NotBlank(message = "không đc để trống")
     @Size(min =5,max = 45,message = " họ tên phải nhiều hơn 5 kí tự và ít hơn 45 ký tự")
+    @Pattern(regexp = "^([A-Z][a-z]+[ ])+[A-Z][a-z]+$",message = "Tên khách hàng không được chứa số. Và các kí tự đầu tiên của mỗi từ phải viết hoa. ")
     private String name;
-    @Pattern(regexp = "^\\d{1,2}-\\d{1,2}-\\d{4}$",message = "hãy nhập số điện thoại bắt đầu từ số 0 và có 10 chữ số")
+    @Pattern(regexp = "^\\d{4}-\\d{1,2}-\\d{1,2}$",message = "hãy nhập đúng định dạng của ngày tháng năm")
     private String dateOfBirth;
     private Boolean gender;
-    @Pattern(regexp = "^[0-9]{12}$",message = "hãy nhập số thẻ CCCD có 12 chữ số")
     private String idCard;
-    @Pattern(regexp = "^[0][0-9]{9}$",message = "hãy nhập số điện thoại bắt đầu từ số 0 và có 10 chữ số")
     private String phoneNumber;
-    @Pattern(regexp = "^[a-z0-9]+[@][g][m][a][i][l][.][c][o][m]$",message = "hãy nhập gmail đúng định dạng có đuôi là '@gmail.com'")
+    @Pattern(regexp = "^[a-z0-9]+@gmail.com$",message = "hãy nhập gmail đúng định dạng có đuôi là '@gmail.com'")
     private String email;
     private String address;
     private CustomerType customerType;
@@ -33,7 +32,15 @@ public class CustomerDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        CustomerDto customerDto = (CustomerDto) target;
+        String idCard = customerDto.getIdCard();
+        if(!idCard.matches("[0-9]{12}") && !idCard.matches("[0-9]{9}")){
+            errors.rejectValue("idCard", "idCard","hãy nhập CMND với 9 số, hoặc nhập CCCD với 12 số ");
+        }
+        String phoneNumber = customerDto.getPhoneNumber();
+        if(!phoneNumber.matches("^09[01][\\d]{7}$") && !phoneNumber.matches("^(84)+9[01][\\d]{7}$")){
+            errors.rejectValue("phoneNumber", "phoneNumber","3.\tSố điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx. ");
+        }
     }
 
     public CustomerDto() {

@@ -74,12 +74,20 @@ public class CustomerController {
     public String showUpdate(@PathVariable("id") int id, Model model){
         List<CustomerType> customerTypeList = customerService.findCustomerTypeAll();
         model.addAttribute("customerTypeList",customerTypeList);
-        model.addAttribute("customer",customerService.findById(id));
+        model.addAttribute("customerDto",customerService.findById(id));
         return "view/customer/edit";
     }
 
     @PostMapping("/edit")
-    public String updateProduct(Model model, @ModelAttribute("customer") Customer customer, RedirectAttributes redirectAttributes){
+    public String update(@Validated @ModelAttribute("customerDto") CustomerDto customerDto, BindingResult bindingResult, Model model,RedirectAttributes redirectAttributes){
+        new CustomerDto().validate(customerDto,bindingResult);
+        if(bindingResult.hasErrors()){
+            List<CustomerType> customerTypeList = customerService.findCustomerTypeAll();
+            model.addAttribute("customerTypeList",customerTypeList);
+            return "view/customer/edit";
+        }
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDto,customer);
         redirectAttributes.addFlashAttribute("mess","Chỉnh sửa thành công");
         customerService.update(customer);
         return "redirect:/customer";
