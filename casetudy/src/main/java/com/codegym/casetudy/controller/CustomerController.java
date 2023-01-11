@@ -94,7 +94,7 @@ public class CustomerController {
     }
 
     @GetMapping("/delete")
-    public String deleteProduct(int id){
+    public String delete(int id){
         customerService.delete(id);
         return "redirect:/customer";
     }

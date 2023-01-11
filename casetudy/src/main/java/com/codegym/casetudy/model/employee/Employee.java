@@ -28,7 +28,7 @@ public class Employee {
     @JoinColumn(name = "division_id", referencedColumnName = "id")
     private Division division;
 
-    @OneToOne
+    @ManyToOne
     private User user;
 
     @OneToMany(mappedBy = "employee")
@@ -131,5 +131,13 @@ public class Employee {
 
     public void setDivision(Division division) {
         this.division = division;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

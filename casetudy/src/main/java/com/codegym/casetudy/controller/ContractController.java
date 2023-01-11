@@ -1,5 +1,7 @@
 package com.codegym.casetudy.controller;
 
+import com.codegym.casetudy.dto.ContractDto;
+import com.codegym.casetudy.dto.CustomerDto;
 import com.codegym.casetudy.dto.IContractDto;
 import com.codegym.casetudy.model.contract.AttachFacility;
 import com.codegym.casetudy.model.contract.Contract;
@@ -9,9 +11,12 @@ import com.codegym.casetudy.model.facility.Facility;
 import com.codegym.casetudy.service.IContractService;
 import com.codegym.casetudy.service.ICustomerService;
 import com.codegym.casetudy.service.IFacilityService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -47,6 +52,23 @@ public class ContractController {
         contractService.save(contract);
         return "redirect:/contract";
     }
+    @PostMapping("/creates")
+    public String createContract(@Validated @ModelAttribute("contractDto") ContractDto contractDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes){
+        new ContractDto().validate(contractDto,bindingResult);
+        if(bindingResult.hasErrors()){
+            List<Customer> customerList = customerService.findAll();
+            model.addAttribute("customerList",customerList);
+            List<Facility> facilityList = facilityService.findAll();
+            model.addAttribute("facilityList",facilityList);
+            model.addAttribute("modal2",true);
+            return "redirect:/contract/create";
+        }
+        Contract contract = new Contract();
+        BeanUtils.copyProperties(contractDto,contract);
+        redirectAttributes.addFlashAttribute("mess","thêm mới thành công");
+        contractService.save(contract);
+        return "redirect:/contract";
+    }
 
     @PostMapping("/add")
     public String createContractDetail(ContractDetail contractDetail, RedirectAttributes redirectAttributes){
@@ -56,7 +78,7 @@ public class ContractController {
     }
 
     @PostMapping("/edit")
-    public String updateProduct(Model model, @ModelAttribute("customer") Contract contract, RedirectAttributes redirectAttributes){
+    public String update(Model model, @ModelAttribute("contract") Contract contract, RedirectAttributes redirectAttributes){
         redirectAttributes.addFlashAttribute("mess","Chỉnh sửa thành công");
         contractService.update(contract);
         return "redirect:/contract";

@@ -25,7 +25,6 @@ public class ContractService implements IContractService {
 
     @Override
     public List<IContractDto> findAllContract() {
-//        List<IContractDto> contractDtos =  contractRepository.findAllContract();
         return contractRepository.findAllContract();
     }
 

@@ -95,7 +95,7 @@ public class FacilityController {
     }
 
     @PostMapping("/edit")
-    public String updateProduct(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes){
+    public String update(@Validated @ModelAttribute("facilityDto") FacilityDto facilityDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes){
         new FacilityDto().validate(facilityDto,bindingResult);
         if(bindingResult.hasErrors()){
             List<FacilityType> facilityTypeList = facilityService.findFacilityTypeAll();
@@ -115,7 +115,7 @@ public class FacilityController {
     }
 
     @GetMapping("/delete")
-    public String deleteProduct(int id){
+    public String delete(int id){
         facilityService.delete(id);
         return "redirect:/facility";
     }

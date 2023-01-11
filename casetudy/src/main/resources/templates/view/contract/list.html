@@ -41,6 +41,7 @@
       <button type="button" class="btn btn-primary" th:attr="onclick=|updateContract('${contract.getId()}','${contract.getStartDate()}','${contract.getEndDate()}','${contract.getDeposit()}','${contract.getCustomerId()}','${contract.getFacilityId()}')|" data-bs-toggle="modal" data-bs-target="#updateModal">
         +
       </button>
+
       <a class="btn btn-primary" th:href="@{/contract/show/__${contract.getId()}__}">Danh sách các dịch vụ đi kèm</a>
     </td>
   </tr>
@@ -67,10 +68,12 @@
           <div class="mb-3">
             <label  class="form-label">ngày kết thúc :</label>
             <input style="width: 1000px" type="date" th:field="*{endDate}" >
+            <i th:errors="*{endDate}" style="color: red"></i>
           </div>
           <div class="mb-3">
             <label class="form-label">tiền gửi</label>
             <input type="text" class="form-control" th:field="*{deposit}">
+            <i th:errors="*{deposit}" style="color: red"></i>
           </div>
 
 
@@ -233,10 +236,24 @@
   </div>
 </div>
 <input type="hidden" id="modalCheck" th:value="${modal}">
+<input type="hidden" id="modal2Check" th:value="${modal2}">
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 <script>
+  let modal2 = document.getElementById("modal2Check").value;
+  // alert(modal2)
+  if (modal2 == "true") {
+    $(document).ready(
+
+            function () {
+              $('#exampleModal2').modal('show')
+            }
+    )
+  }
+</script>
+<script>
   let modal = document.getElementById("modalCheck").value;
+
   if (modal == "true") {
     $(document).ready(
             function () {
@@ -244,6 +261,8 @@
             }
     )
   }
+
+
   function updateContract(id,start,end,deposit,customer,facility) {
     document.getElementById('idEdit').value = id;
     document.getElementById('startEdit').value = start;
