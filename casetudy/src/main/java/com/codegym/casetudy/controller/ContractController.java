@@ -46,12 +46,7 @@ public class ContractController {
         model.addAttribute("contract",new Contract());
         return "view/contract/list";
     }
-    @PostMapping("/create")
-    public String createContract( @ModelAttribute("contract") Contract contract, RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute("mess","thêm mới thành công");
-        contractService.save(contract);
-        return "redirect:/contract";
-    }
+
     @PostMapping("/creates")
     public String createContract(@Validated @ModelAttribute("contractDto") ContractDto contractDto, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes){
         new ContractDto().validate(contractDto,bindingResult);
@@ -81,6 +76,12 @@ public class ContractController {
     public String update(Model model, @ModelAttribute("contract") Contract contract, RedirectAttributes redirectAttributes){
         redirectAttributes.addFlashAttribute("mess","Chỉnh sửa thành công");
         contractService.update(contract);
+        return "redirect:/contract";
+    }
+    @PostMapping("/create")
+    public String createContract( @ModelAttribute("contract") Contract contract, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("mess","thêm mới thành công");
+        contractService.save(contract);
         return "redirect:/contract";
     }
     @GetMapping("/show/{id}")
